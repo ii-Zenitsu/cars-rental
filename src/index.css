@@ -1,0 +1,32 @@
+/* @layer theme, base, antd, components, utilities; */
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: all;
+  }
+
+@layer components {
+  .border-sh {
+      @apply border-2 border-l-gray-300 dark:border-neutral shadow-lg shadow-neutral-950;
+  }
+  .pill-btn {
+       @apply px-2 py-1 rounded-full border text-sm hover:cursor-pointer hover:bg-primary;
+  }
+  .pill-active {
+       @apply bg-primary;
+  }
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=number] {
+  appearance: textfield;
+}
+.input:focus-within, .select:focus-within{
+  outline: none;
+}

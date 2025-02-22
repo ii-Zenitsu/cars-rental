@@ -1,0 +1,515 @@
+{
+  "cars": [
+    {
+      "id": "1",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "year": "2022",
+      "price": "100",
+      "image": "/images/car1.png",
+      "type": "petrol",
+      "available": false
+    },
+    {
+      "id": "2",
+      "brand": "Honda",
+      "model": "Civic",
+      "year": "2023",
+      "price": "60",
+      "image": "/images/car2.png",
+      "type": "petrol",
+      "available": true
+    },
+    {
+      "id": "3",
+      "brand": "Ford",
+      "model": "Focus",
+      "year": "2021",
+      "price": "45",
+      "image": "/images/car3.png",
+      "type": "diesel",
+      "available": true
+    },
+    {
+      "id": "4",
+      "brand": "BMW",
+      "model": "X5",
+      "year": "2023",
+      "price": "100",
+      "image": "/images/car4.png",
+      "type": "electric",
+      "available": false
+    },
+    {
+      "id": "5",
+      "brand": "Mercedes",
+      "model": "C-Class",
+      "year": "2022",
+      "price": "90",
+      "image": "/images/car5.png",
+      "type": "hybrid",
+      "available": true
+    },
+    {
+      "id": "6",
+      "brand": "Audi",
+      "model": "A4",
+      "year": "2023",
+      "price": "80",
+      "image": "/images/car6.png",
+      "type": "petrol",
+      "available": true
+    },
+    {
+      "id": "7",
+      "brand": "Nissan",
+      "model": "Altima",
+      "year": "2021",
+      "price": "55",
+      "image": "/images/car7.png",
+      "type": "petrol",
+      "available": false
+    },
+    {
+      "id": "8",
+      "brand": "Tesla",
+      "model": "Model 3",
+      "year": "2023",
+      "price": "110",
+      "image": "/images/car8.png",
+      "type": "electric",
+      "available": false
+    },
+    {
+      "id": "9",
+      "brand": "Chevrolet",
+      "model": "Malibu",
+      "year": "2022",
+      "price": "65",
+      "image": "/images/car9.png",
+      "type": "hybrid",
+      "available": false
+    },
+    {
+      "id": "10",
+      "brand": "Hyundai",
+      "model": "Elantra",
+      "year": "2023",
+      "price": "40",
+      "image": "/images/car10.png",
+      "type": "petrol",
+      "available": false
+    },
+    {
+      "id": "11",
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": "2023",
+      "price": "95",
+      "image": "/images/car1.png",
+      "type": "hybrid",
+      "available": true
+    },
+    {
+      "id": "12",
+      "brand": "Honda",
+      "model": "Accord",
+      "year": "2022",
+      "price": "85",
+      "image": "/images/car2.png",
+      "type": "petrol",
+      "available": true
+    },
+    {
+      "id": "13",
+      "brand": "Ford",
+      "model": "Mustang",
+      "year": "2023",
+      "price": "120",
+      "image": "/images/car3.png",
+      "type": "petrol",
+      "available": true
+    },
+    {
+      "id": "14",
+      "brand": "BMW",
+      "model": "3 Series",
+      "year": "2022",
+      "price": "110",
+      "image": "/images/car4.png",
+      "type": "petrol",
+      "available": false
+    },
+    {
+      "id": "15",
+      "brand": "Mercedes",
+      "model": "E-Class",
+      "year": "2023",
+      "price": "130",
+      "image": "/images/car5.png",
+      "type": "hybrid",
+      "available": false
+    },
+    {
+      "id": "16",
+      "brand": "Audi",
+      "model": "Q5",
+      "year": "2022",
+      "price": "115",
+      "image": "/images/car6.png",
+      "type": "diesel",
+      "available": false
+    },
+    {
+      "id": "17",
+      "brand": "Nissan",
+      "model": "Rogue",
+      "year": "2023",
+      "price": "75",
+      "image": "/images/car7.png",
+      "type": "petrol",
+      "available": false
+    },
+    {
+      "id": "18",
+      "brand": "Tesla",
+      "model": "Model S",
+      "year": "2023",
+      "price": "150",
+      "image": "/images/car8.png",
+      "type": "electric",
+      "available": false
+    },
+    {
+      "id": "19",
+      "brand": "Chevrolet",
+      "model": "Equinox",
+      "year": "2022",
+      "price": "70",
+      "image": "/images/car9.png",
+      "type": "petrol",
+      "available": false
+    },
+    {
+      "id": "20",
+      "brand": "Hyundai",
+      "model": "Tucson",
+      "year": "2023",
+      "price": "65",
+      "image": "/images/car10.png",
+      "type": "hybrid",
+      "available": false
+    },
+    {
+      "id": "21",
+      "brand": "Toyota",
+      "model": "RAV4",
+      "year": "2023",
+      "price": "90",
+      "image": "/images/car1.png",
+      "type": "hybrid",
+      "available": true
+    },
+    {
+      "id": "22",
+      "brand": "Honda",
+      "model": "CR-V",
+      "year": "2022",
+      "price": "80",
+      "image": "/images/car2.png",
+      "type": "petrol",
+      "available": false
+    },
+    {
+      "id": "23",
+      "brand": "Ford",
+      "model": "Escape",
+      "year": "2023",
+      "price": "75",
+      "image": "/images/car3.png",
+      "type": "hybrid",
+      "available": false
+    },
+    {
+      "id": "24",
+      "brand": "BMW",
+      "model": "X3",
+      "year": "2022",
+      "price": "105",
+      "image": "/images/car4.png",
+      "type": "petrol",
+      "available": true
+    },
+    {
+      "id": "25",
+      "brand": "Mercedes",
+      "model": "GLC",
+      "year": "2023",
+      "price": "125",
+      "image": "/images/car5.png",
+      "type": "hybrid",
+      "available": true
+    },
+    {
+      "id": "26",
+      "brand": "Audi",
+      "model": "A6",
+      "year": "2022",
+      "price": "120",
+      "image": "/images/car6.png",
+      "type": "diesel",
+      "available": true
+    },
+    {
+      "id": "27",
+      "brand": "Nissan",
+      "model": "Sentra",
+      "year": "2023",
+      "price": "60",
+      "image": "/images/car7.png",
+      "type": "petrol",
+      "available": true
+    },
+    {
+      "id": "28",
+      "brand": "Tesla",
+      "model": "Model Y",
+      "year": "2023",
+      "price": "140",
+      "image": "/images/car8.png",
+      "type": "electric",
+      "available": true
+    },
+    {
+      "id": "29",
+      "brand": "Chevrolet",
+      "model": "Traverse",
+      "year": "2022",
+      "price": "85",
+      "image": "/images/car9.png",
+      "type": "petrol",
+      "available": true
+    },
+    {
+      "id": "30",
+      "brand": "Hyundai",
+      "model": "Santa Fe",
+      "year": "2023",
+      "price": "75",
+      "image": "/images/car10.png",
+      "type": "hybrid",
+      "available": true
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "date_birthday": "1995-05-14",
+      "city": "New York",
+      "address": "123 Main St"
+    },
+    {
+      "id": "2",
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "email": "alice.smith@example.com",
+      "date_birthday": "1990-08-22",
+      "city": "Los Angeles",
+      "address": "456 Sunset Blvd"
+    },
+    {
+      "id": "3",
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "email": "bob.johnson@example.com",
+      "date_birthday": "1983-03-10",
+      "city": "Chicago",
+      "address": "789 Michigan Ave"
+    },
+    {
+      "id": "4",
+      "firstName": "Emma",
+      "lastName": "Williams",
+      "email": "emma.williams@example.com",
+      "date_birthday": "1994-07-01",
+      "city": "Houston",
+      "address": "321 River Rd"
+    },
+    {
+      "id": "5",
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "email": "michael.brown@example.com",
+      "date_birthday": "1986-12-15",
+      "city": "Phoenix",
+      "address": "654 Oak St"
+    },
+    {
+      "id": "7",
+      "firstName": "David",
+      "lastName": "Wilson",
+      "email": "david.wilson@example.com",
+      "date_birthday": "1992-09-30",
+      "city": "Miami",
+      "address": "987 Ocean Dr"
+    },
+    {
+      "id": "8",
+      "firstName": "Sophia",
+      "lastName": "Martinez",
+      "email": "sophia.martinez@example.com",
+      "date_birthday": "1989-04-25",
+      "city": "San Francisco",
+      "address": "654 Golden Gate Ave"
+    },
+    {
+      "id": "9",
+      "firstName": "James",
+      "lastName": "Anderson",
+      "email": "james.anderson@example.com",
+      "date_birthday": "1980-11-12",
+      "city": "Seattle",
+      "address": "321 Pine St"
+    },
+    {
+      "id": "10",
+      "firstName": "Olivia",
+      "lastName": "Taylor",
+      "email": "olivia.taylor@example.com",
+      "date_birthday": "1998-06-18",
+      "city": "Boston",
+      "address": "789 Beacon St"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "1",
+      "carId": "1",
+      "clientId": "1",
+      "startDate": "2024-12-01",
+      "endDate": "2025-06-01"
+    },
+    {
+      "id": "2",
+      "carId": "3",
+      "clientId": "1",
+      "startDate": "2024-07-01",
+      "endDate": "2024-12-31"
+    },
+    {
+      "id": "3",
+      "carId": "4",
+      "clientId": "2",
+      "startDate": "2024-09-15",
+      "endDate": "2025-03-15"
+    },
+    {
+      "id": "4",
+      "carId": "7",
+      "clientId": "3",
+      "startDate": "2024-11-01",
+      "endDate": "2025-05-01"
+    },
+    {
+      "id": "5",
+      "carId": "8",
+      "clientId": "4",
+      "startDate": "2024-10-01",
+      "endDate": "2025-02-28"
+    },
+    {
+      "id": "6",
+      "carId": "10",
+      "clientId": "5",
+      "startDate": "2024-12-01",
+      "endDate": "2025-06-01"
+    },
+    {
+      "id": "7",
+      "carId": "2",
+      "clientId": "2",
+      "startDate": "2024-03-01",
+      "endDate": "2024-08-31"
+    },
+    {
+      "id": "9",
+      "carId": "12",
+      "clientId": "7",
+      "startDate": "2024-06-15",
+      "endDate": "2024-12-15"
+    },
+    {
+      "id": "10",
+      "carId": "13",
+      "clientId": "8",
+      "startDate": "2024-07-01",
+      "endDate": "2024-12-31"
+    },
+    {
+      "id": "11",
+      "carId": "14",
+      "clientId": "9",
+      "startDate": "2024-08-01",
+      "endDate": "2025-02-28"
+    },
+    {
+      "id": "12",
+      "carId": "15",
+      "clientId": "10",
+      "startDate": "2024-09-01",
+      "endDate": "2025-03-01"
+    },
+    {
+      "id": "13",
+      "carId": "16",
+      "clientId": "1",
+      "startDate": "2024-10-01",
+      "endDate": "2025-04-30"
+    },
+    {
+      "id": "14",
+      "carId": "17",
+      "clientId": "2",
+      "startDate": "2024-11-01",
+      "endDate": "2025-05-01"
+    },
+    {
+      "id": "15",
+      "carId": "18",
+      "clientId": "3",
+      "startDate": "2024-12-01",
+      "endDate": "2025-06-01"
+    },
+    {
+      "id": "16",
+      "carId": "19",
+      "clientId": "4",
+      "startDate": "2025-01-01",
+      "endDate": "2025-07-01"
+    },
+    {
+      "id": "17",
+      "carId": "20",
+      "clientId": "5",
+      "startDate": "2025-02-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "19",
+      "carId": "22",
+      "clientId": "7",
+      "startDate": "2025-04-01",
+      "endDate": "2025-10-01"
+    },
+    {
+      "id": "20",
+      "carId": "23",
+      "clientId": "8",
+      "startDate": "2025-05-01",
+      "endDate": "2025-11-01"
+    }
+  ]
+}
