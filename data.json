@@ -78,7 +78,7 @@
       "price": "110",
       "image": "/images/car8.png",
       "type": "electric",
-      "available": false
+      "available": true
     },
     {
       "id": "9",
@@ -88,7 +88,7 @@
       "price": "65",
       "image": "/images/car9.png",
       "type": "hybrid",
-      "available": false
+      "available": true
     },
     {
       "id": "10",
@@ -138,7 +138,7 @@
       "price": "110",
       "image": "/images/car4.png",
       "type": "petrol",
-      "available": false
+      "available": true
     },
     {
       "id": "15",
@@ -148,7 +148,7 @@
       "price": "130",
       "image": "/images/car5.png",
       "type": "hybrid",
-      "available": false
+      "available": true
     },
     {
       "id": "16",
@@ -303,211 +303,295 @@
   ],
   "clients": [
     {
-      "id": "1",
+      "id": "client1",
       "firstName": "John",
       "lastName": "Doe",
       "email": "john.doe@example.com",
+      "password": "password1",
+      "cin": "AB123456",
+      "drivingLicenseId": "DL123456",
       "date_birthday": "1995-05-14",
       "city": "New York",
-      "address": "123 Main St"
+      "address": "123 Main St",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "2",
+      "id": "client2",
       "firstName": "Alice",
       "lastName": "Smith",
       "email": "alice.smith@example.com",
+      "password": "password2",
+      "cin": "CD654321",
+      "drivingLicenseId": "DL654321",
       "date_birthday": "1990-08-22",
       "city": "Los Angeles",
-      "address": "456 Sunset Blvd"
+      "address": "456 Sunset Blvd",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "3",
+      "id": "client3",
       "firstName": "Bob",
       "lastName": "Johnson",
       "email": "bob.johnson@example.com",
+      "password": "password3",
+      "cin": "EF789012",
+      "drivingLicenseId": "DL789012",
       "date_birthday": "1983-03-10",
       "city": "Chicago",
-      "address": "789 Michigan Ave"
+      "address": "789 Michigan Ave",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "4",
+      "id": "client4",
       "firstName": "Emma",
       "lastName": "Williams",
       "email": "emma.williams@example.com",
+      "password": "password4",
+      "cin": "GH345678",
+      "drivingLicenseId": "DL345678",
       "date_birthday": "1994-07-01",
       "city": "Houston",
-      "address": "321 River Rd"
+      "address": "321 River Rd",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "5",
+      "id": "client5",
       "firstName": "Michael",
       "lastName": "Brown",
       "email": "michael.brown@example.com",
+      "password": "password5",
+      "cin": "IJ901234",
+      "drivingLicenseId": "DL901234",
       "date_birthday": "1986-12-15",
       "city": "Phoenix",
-      "address": "654 Oak St"
+      "address": "654 Oak St",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "7",
+      "id": "client7",
       "firstName": "David",
       "lastName": "Wilson",
       "email": "david.wilson@example.com",
+      "password": "password7",
+      "cin": "KL567890",
+      "drivingLicenseId": "DL567890",
       "date_birthday": "1992-09-30",
       "city": "Miami",
-      "address": "987 Ocean Dr"
+      "address": "987 Ocean Dr",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "8",
+      "id": "client8",
       "firstName": "Sophia",
       "lastName": "Martinez",
       "email": "sophia.martinez@example.com",
+      "password": "password8",
+      "cin": "MN123456",
+      "drivingLicenseId": "DL123456",
       "date_birthday": "1989-04-25",
       "city": "San Francisco",
-      "address": "654 Golden Gate Ave"
+      "address": "654 Golden Gate Ave",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "9",
+      "id": "client9",
       "firstName": "James",
       "lastName": "Anderson",
       "email": "james.anderson@example.com",
+      "password": "password9",
+      "cin": "OP654321",
+      "drivingLicenseId": "DL654321",
       "date_birthday": "1980-11-12",
       "city": "Seattle",
-      "address": "321 Pine St"
+      "address": "321 Pine St",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": "10",
+      "id": "client10",
       "firstName": "Olivia",
       "lastName": "Taylor",
       "email": "olivia.taylor@example.com",
+      "password": "password10",
+      "cin": "QR789012",
+      "drivingLicenseId": "DL789012",
       "date_birthday": "1998-06-18",
       "city": "Boston",
-      "address": "789 Beacon St"
+      "address": "789 Beacon St",
+      "role": "client",
+      "dateCreated": "2024-01-01T00:00:00.000Z",
+      "dateModified": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "878b",
+      "firstName": "Mohamed",
+      "lastName": "El Ghaoui",
+      "email": "med@gmail.com",
+      "password": "0000",
+      "cin": "JB123456",
+      "drivingLicenseId": "23569898",
+      "date_birthday": "2001-06-18",
+      "city": "agadir",
+      "address": "tarrast",
+      "role": "admin",
+      "dateCreated": "2025-02-27T21:35:03.894Z",
+      "dateModified": "2025-02-27T21:35:03.894Z"
+    },
+    {
+      "id": "d809",
+      "firstName": "oussama",
+      "lastName": "matboua",
+      "email": "oussama@gmail.com",
+      "password": "0000",
+      "cin": "JB123456",
+      "drivingLicenseId": "23569898",
+      "date_birthday": "2000-06-04",
+      "city": "agadir",
+      "address": "tarrast",
+      "role": "client",
+      "dateCreated": "2025-03-04T12:06:11.119Z",
+      "dateModified": "2025-03-04T12:06:11.119Z"
     }
   ],
   "contracts": [
     {
       "id": "1",
       "carId": "1",
-      "clientId": "1",
+      "clientId": "client1",
       "startDate": "2024-12-01",
       "endDate": "2025-06-01"
     },
     {
       "id": "2",
       "carId": "3",
-      "clientId": "1",
+      "clientId": "client1",
       "startDate": "2024-07-01",
       "endDate": "2024-12-31"
     },
     {
       "id": "3",
       "carId": "4",
-      "clientId": "2",
+      "clientId": "client2",
       "startDate": "2024-09-15",
       "endDate": "2025-03-15"
     },
     {
       "id": "4",
       "carId": "7",
-      "clientId": "3",
+      "clientId": "client3",
       "startDate": "2024-11-01",
       "endDate": "2025-05-01"
     },
     {
       "id": "5",
       "carId": "8",
-      "clientId": "4",
+      "clientId": "client4",
       "startDate": "2024-10-01",
       "endDate": "2025-02-28"
     },
     {
       "id": "6",
       "carId": "10",
-      "clientId": "5",
+      "clientId": "client5",
       "startDate": "2024-12-01",
       "endDate": "2025-06-01"
     },
     {
       "id": "7",
       "carId": "2",
-      "clientId": "2",
+      "clientId": "client2",
       "startDate": "2024-03-01",
       "endDate": "2024-08-31"
     },
     {
       "id": "9",
       "carId": "12",
-      "clientId": "7",
+      "clientId": "client7",
       "startDate": "2024-06-15",
       "endDate": "2024-12-15"
     },
     {
       "id": "10",
       "carId": "13",
-      "clientId": "8",
+      "clientId": "client8",
       "startDate": "2024-07-01",
       "endDate": "2024-12-31"
     },
     {
       "id": "11",
       "carId": "14",
-      "clientId": "9",
+      "clientId": "client9",
       "startDate": "2024-08-01",
       "endDate": "2025-02-28"
     },
     {
       "id": "12",
       "carId": "15",
-      "clientId": "10",
+      "clientId": "client10",
       "startDate": "2024-09-01",
       "endDate": "2025-03-01"
     },
     {
       "id": "13",
       "carId": "16",
-      "clientId": "1",
+      "clientId": "client1",
       "startDate": "2024-10-01",
       "endDate": "2025-04-30"
     },
     {
       "id": "14",
       "carId": "17",
-      "clientId": "2",
+      "clientId": "client2",
       "startDate": "2024-11-01",
       "endDate": "2025-05-01"
     },
     {
       "id": "15",
       "carId": "18",
-      "clientId": "3",
+      "clientId": "client3",
       "startDate": "2024-12-01",
       "endDate": "2025-06-01"
     },
     {
       "id": "16",
       "carId": "19",
-      "clientId": "4",
+      "clientId": "client4",
       "startDate": "2025-01-01",
       "endDate": "2025-07-01"
     },
     {
       "id": "17",
       "carId": "20",
-      "clientId": "5",
+      "clientId": "client5",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
     },
     {
       "id": "19",
       "carId": "22",
-      "clientId": "7",
+      "clientId": "client7",
       "startDate": "2025-04-01",
       "endDate": "2025-10-01"
     },
     {
       "id": "20",
       "carId": "23",
-      "clientId": "8",
+      "clientId": "client8",
       "startDate": "2025-05-01",
       "endDate": "2025-11-01"
     }

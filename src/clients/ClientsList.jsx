@@ -11,7 +11,6 @@ import Fuse from "fuse.js";
 
 export default function ClientsList() {
   const [client, setClient] = useState({});
-  const [nextId, setNextId] = useState("1");
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("");
 
@@ -32,7 +31,6 @@ export default function ClientsList() {
   };
 
   function handleAdd() {
-    setNextId( clients.length > 0 ? String(Math.max(...clients.map((client) => client.id)) + 1) : "1" );
     document.getElementById("addModal").showModal();
   }
 
@@ -143,7 +141,6 @@ export default function ClientsList() {
           <div className="modal-box">
             <AddClient
               clients={clients}
-              nextId={nextId}
             />
           </div>
           <form method="dialog" className="modal-backdrop">

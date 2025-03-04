@@ -8,14 +8,10 @@
   .border-sh {
       @apply border-2 border-l-gray-300 dark:border-neutral shadow-lg shadow-neutral-950;
   }
-  .pill-btn {
-       @apply px-2 py-1 rounded-full border text-sm hover:cursor-pointer hover:bg-primary;
-  }
-  .pill-active {
-       @apply bg-primary;
+  .ant-message-notice-content {
+       @apply capitalize btn! btn-success! btn-soft! hover:cursor-text!;
   }
 }
-
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -30,3 +26,4 @@ input[type=number] {
 .input:focus-within, .select:focus-within{
   outline: none;
 }
+

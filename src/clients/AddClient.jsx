@@ -4,11 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 
-function AddClient({ clients, nextId }) {
+function AddClient({ clients }) {
   const dispatch = useDispatch();
 
   const [client, setClient] = useState({
-    id: nextId,
     firstName: "",
     lastName: "",
     email: "",
@@ -31,7 +30,6 @@ function AddClient({ clients, nextId }) {
   function cancelAdd() {
     document.getElementById("addModal").close();
     setClient({...client,
-      id: nextId,
       firstName: "",
       lastName: "",
       email: "",
@@ -44,12 +42,10 @@ function AddClient({ clients, nextId }) {
   function handleAdd(e) {
     e.preventDefault();
   
-    const newClient = { ...client, id: nextId };
-  
-    axios.post("http://localhost:3001/clients", newClient)
+    axios.post("http://localhost:3001/clients", { ...client })
       .then(response => {
         cancelAdd();
-        dispatch({ type: "UPDATE_CLIENTS", payload: [...clients, newClient] });
+        dispatch({ type: "UPDATE_CLIENTS", payload: [...clients, { ...client }] });
       })
       .catch(error => console.error("Error adding client:", error));
   }
@@ -59,7 +55,6 @@ function AddClient({ clients, nextId }) {
       <div className="flex flex-wrap justify-between items-center gap-6 mb-4">
         <div className="flex gap-4 items-center">
           <h1 className="text-4xl text-center">Add Client</h1>
-          <span className="badge badge-outline badge-lg mt-2">{nextId}</span>
         </div>
       </div>
 

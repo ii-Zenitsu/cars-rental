@@ -13,16 +13,22 @@ const useFetchData = () => {
       axios.get("http://localhost:3001/cars"),
       axios.get("http://localhost:3001/clients"),
       axios.get("http://localhost:3001/contracts"),
-    ])
-      .then(([carsRes, clientsRes, contractsRes]) => {
+    ]).then(([carsRes, clientsRes, contractsRes]) => {
         dispatch({ type: "UPDATE_CARS", payload: createCars(carsRes.data) });
         dispatch({ type: "UPDATE_CLIENTS", payload: createClients(clientsRes.data) });
         dispatch({ type: "UPDATE_CONTRACTS", payload: createContracts(contractsRes.data) });
-      })
-      .catch((error) => {
+
+        const email = localStorage.getItem("user_email");
+        if (email) {
+          const user = createUser(clientsRes.data.find((c) => c.email === email));
+          if (user) {
+            dispatch({ type: "UPDATE_USER", payload: user });
+          }
+        }
+
+      }).catch((error) => {
         console.error("Error fetching data:", error);
-      })
-      .finally(() => {
+      }).finally(() => {
         setLoading(false);
       });
   },[dispatch]);
@@ -72,11 +78,20 @@ const useUpdateCarAvailability = () => {
   }, []);
 
 };
+
 function createCars(cars) {
   return cars.map(c => ({...c,
     getName : function() { return this.brand + " " + this.model; },
     getInfo : function() { return this.id + " : " + this.getName(); },
     getContracts : function(contracts) { return contracts.filter(c => c.carId === this.id)},
+    getDaysLeft: function(contracts) {
+      const activeContract = contracts.find(
+        contract => contract.carId === this.id && new Date(contract.endDate) > new Date()
+      );
+      if (!activeContract) {return 0;}
+      const diffMs = new Date(activeContract.endDate) - new Date();
+      return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    },
   }) )
 }
 
@@ -118,6 +133,25 @@ function createContracts(contracts) {
       return car.price * daysDiff;
     },
   }) )
+}
+
+function createUser(user) {
+  return ({...user,
+      getFullName : function() { return this.firstName + " " + this.lastName; },
+      getInfo : function() { return this.id + " : " + this.getFullName(); },
+      getContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id)},
+      getAge : function() {
+        const birthDate = new Date(this.date_birthday);
+        const today = new Date();
+        
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        const dayDiff = today.getDate() - birthDate.getDate();
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) { age--;}
+        
+        return age;
+      }
+    })
 }
 
 export {useUpdateCarAvailability, useFetchData};

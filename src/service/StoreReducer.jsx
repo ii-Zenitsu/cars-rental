@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import axios from "axios";
 
 const initialState = {
+  user: null,
   cars: [],
   clients: [],
   contracts: [],
@@ -10,6 +9,8 @@ const initialState = {
 
 const storeReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "UPDATE_USER":
+      return { ...state, user: action.payload };
     case "UPDATE_CARS":
       return { ...state, cars: action.payload };
     case "UPDATE_CLIENTS":
@@ -22,15 +23,3 @@ const storeReducer = (state = initialState, action) => {
 };
 
 export default storeReducer;
-
-function add(endPoint, data) {
-  axios.post(`http://localhost:3001/${endPoint}`, data)
-  .then((response) => response.data)
-  .catch(() => false);
-}
-
-function edit(endPoint, data) {
-  axios.put(`http://localhost:3001/${endPoint}/${data.id}`, data)
-  .then(() => (response) => response.data)
-  .catch(() => false)
-}

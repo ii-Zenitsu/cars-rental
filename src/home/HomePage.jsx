@@ -3,6 +3,7 @@ import AvailableCarsCarousel from "./AvailableCarsCarousel"
 import FeaturedCars from "./FeaturedCars"
 import AboutUs from "./AboutUs"
 import ContactUs from "./ContactUs"
+import AnimatedModalDemo from "./modalTest"
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <HeroSection />
       <AvailableCarsCarousel />
       <FeaturedCars />
+      <AnimatedModalDemo />
       <AboutUs />
       <ContactUs />
     </div>

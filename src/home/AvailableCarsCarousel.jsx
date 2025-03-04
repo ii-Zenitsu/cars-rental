@@ -8,20 +8,20 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// Navigation Buttons Component
+
 const SwiperNavButtons = () => {
   const swiper = useSwiper(); // Use the hook inside the child component
 
   return (
     <>
       <button
-        className="prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 btn btn-circle btn-outline text-xl w-12 h-12 border-2 bg-white hover:bg-gray-100"
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full text-xl w-10 h-10 border-2 transition duration-300 hover:bg-primary hover:border-primary hover:text-neutral cursor-pointer"
         onClick={() => swiper.slidePrev()}
       >
         ❮
       </button>
       <button
-        className="next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 btn btn-circle btn-outline text-xl w-12 h-12 border-2 bg-white hover:bg-gray-100"
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full text-xl w-10 h-10 border-2 transition duration-300 hover:bg-primary hover:border-primary hover:text-neutral cursor-pointer"
         onClick={() => swiper.slideNext()}
       >
         ❯
@@ -31,15 +31,17 @@ const SwiperNavButtons = () => {
 };
 
 export default function AvailableCarsCarousel() {
-  const cars = useSelector((state) => state.cars.filter((car) => car.available));
+  const swiper = useSwiper();
+  const cars = useSelector((state) => state.cars);
 
   return (
-    <div className="py-12 bg-base-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative"> {/* Add relative positioning here */}
+    <div className="py-6 bg-base-100">
+      <div className="max-w-full mx-auto px-8 relative"> {/* Add relative positioning here */}
         <h2 className="text-3xl font-bold mb-8">Available Cars</h2>
         <Swiper
+          className="px-11! pb-8! pt-2!"
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
+          spaceBetween={15}
           slidesPerView={1}
           pagination={{ clickable: true }}
           loop={true}
@@ -49,19 +51,19 @@ export default function AvailableCarsCarousel() {
               slidesPerView: 2,
               spaceBetween: 20,
             },
-            768: {
+            924: {
               slidesPerView: 3,
-              spaceBetween: 40,
+              spaceBetween: 35,
             },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 50,
+            1224: {
+              slidesPerView: 4,
+              spaceBetween: 45,
             },
           }}
         >
-          {cars.map((car) => (
+          {cars.filter((c) => c.available).map((car) => (
             <SwiperSlide key={car.id}>
-              <div className="card bg-base-100 shadow-xl">
+              <div className="card bg-base-100 border-sh">
                 <figure>
                   <img
                     src={car.image || "/placeholder.svg?height=200&width=300"}
@@ -81,7 +83,6 @@ export default function AvailableCarsCarousel() {
               </div>
             </SwiperSlide>
           ))}
-          {/* Add the navigation buttons component inside Swiper */}
           <SwiperNavButtons />
         </Swiper>
       </div>
