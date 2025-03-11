@@ -3,6 +3,9 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
+import { createClient } from "../service/FetchData";
+import { message, Popconfirm } from "antd";
+import { CircleCheckBig, CircleHelp } from "lucide-react";
 
 function AddClient({ clients }) {
   const dispatch = useDispatch();
@@ -14,22 +17,32 @@ function AddClient({ clients }) {
     date_birthday: "",
     city: "",
     address: "",
-    getFullName : function() { return this.firstName + " " + this.lastName; },
-    getInfo : function() { return this.id + " : " + this.getFullName(); },
-    getContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id)},
-    getAge : function() {
+    getFullName: function () {
+      return this.firstName + " " + this.lastName;
+    },
+    getInfo: function () {
+      return this.id + " : " + this.getFullName();
+    },
+    getContracts: function (contracts) {
+      return contracts.filter((c) => c.clientId === this.id);
+    },
+    getAge: function () {
       const birthDate = new Date(this.date_birthday);
       const today = new Date();
       let age = today.getFullYear() - birthDate.getFullYear();
       const monthDiff = today.getMonth() - birthDate.getMonth();
       const dayDiff = today.getDate() - birthDate.getDate();
-      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) { age--;}
-      return age;}
+      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+      }
+      return age;
+    },
   });
 
   function cancelAdd() {
     document.getElementById("addModal").close();
-    setClient({...client,
+    setClient({
+      ...client,
       firstName: "",
       lastName: "",
       email: "",
@@ -39,15 +52,31 @@ function AddClient({ clients }) {
     });
   }
 
-  function handleAdd(e) {
-    e.preventDefault();
-  
-    axios.post("http://localhost:3001/clients", { ...client })
-      .then(response => {
+  function validate() {
+    for (const [key, value] of Object.entries(client)) {
+      if (!value) {
+        alert(`Please fill in the ${key.replace("Id", "")} field.`)
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function handleAdd() {
+    if (!validate()) return;
+    axios
+      .post("http://localhost:3001/clients", { ...client })
+      .then((res) => {
         cancelAdd();
-        dispatch({ type: "UPDATE_CLIENTS", payload: [...clients, { ...client }] });
+        dispatch({ type: "UPDATE_CLIENTS", payload: [...clients, createClient(res.data)] });
+        message.open({
+          className: "text-success",
+          content: "Client added successfully",
+          duration: 3,
+          icon: <CircleCheckBig size={16} className="mr-1" />,
+        });
       })
-      .catch(error => console.error("Error adding client:", error));
+      .catch((error) => console.error("Error adding client:", error));
   }
 
   return (
@@ -58,7 +87,7 @@ function AddClient({ clients }) {
         </div>
       </div>
 
-      <form onSubmit={handleAdd} className="space-y-4 flex flex-col">
+      <form className="space-y-4 flex flex-col">
         <label className="form-control w-full max-w-2xl">
           <span className="label-text">First Name</span>
           <input
@@ -126,8 +155,23 @@ function AddClient({ clients }) {
         </label>
 
         <div className="flex justify-between mt-4">
-          <button type="button" onClick={cancelAdd} className="btn btn-outline"><FontAwesomeIcon icon={faTimes} /> Cancel</button>
-          <button type="submit" className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /> Save</button>
+          <button type="button" onClick={cancelAdd} className="btn btn-outline">
+            <FontAwesomeIcon icon={faTimes} /> Cancel
+          </button>
+          <Popconfirm
+            placement="topLeft"
+            title="Add Client?"
+            description="Are you sure you want to add this client?"
+            onConfirm={handleAdd}
+            okText="Yes"
+            cancelText="No"
+            getPopupContainer={(triggerNode) => triggerNode.parentNode}
+            icon={<CircleHelp size={16} className="m-1" />}
+          >
+            <div className="btn btn-primary">
+              <FontAwesomeIcon icon={faCheck} /> Save
+            </div>
+          </Popconfirm>
         </div>
       </form>
     </div>

@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import { useDispatch } from "react-redux";
+import { DatePicker, message, Popconfirm } from "antd";
+import dayjs from "dayjs";
+import { CircleCheckBig, CircleHelp } from "lucide-react";
 
 function EditCar({ car, setCar, cars}) {
   const dispatch = useDispatch();
@@ -12,10 +15,26 @@ function EditCar({ car, setCar, cars}) {
     document.getElementById("modifyModal").close();
   }
 
-  function handleEdit(e) {
-    e.preventDefault();
+  function validate() {
+    for (const [key, value] of Object.entries(car)) {
+      if (!value) {
+        alert(`Please fill in the ${key.replace("Id", "")} field.`)
+        return false;
+      }
+    }
+    return true;
+  }
+    
+  function handleEdit() {
+    if (!validate()) return;
     axios.put(`http://localhost:3001/cars/${car.id}`, car).then(() => {
       cancelEdit();
+      message.open({
+        className: "text-success",
+        content: `All changes are saved`,
+        duration: 3,
+        icon: <CircleCheckBig size={16} className="mr-1" />,
+      });
       // use axios.get insted of map for multi users
       dispatch({ type: "UPDATE_CARS", payload: cars.map((c) => (c.id === car.id ? car : c)) });
     })
@@ -30,7 +49,7 @@ function EditCar({ car, setCar, cars}) {
         </div>
       </div>
 
-      <form onSubmit={handleEdit} className="space-y-4 flex flex-col">
+      <form className="space-y-4 flex flex-col">
         <label className="form-control w-full max-w-2xl">
           <div className="label">
             <span className="label-text">Brand</span>
@@ -61,15 +80,16 @@ function EditCar({ car, setCar, cars}) {
           <div className="label">
             <span className="label-text">Year</span>
           </div>
-          <input
-            type="number"
-            className="input input-bordered w-full"
-            value={car.year || ""}
-            onChange={(e) => setCar({ ...car, year: e.target.value })}
-            min="1886"
-            max={new Date().getFullYear()}
-            step="1"
-            required
+          <DatePicker
+          picker="year"
+          required
+          value={dayjs(car.year, "YYYY")}
+          minDate={dayjs('1886', "YYYY")}
+          maxDate={dayjs()}
+          className="input! input-bordered! w-full! text-neutral-400! focus-within:outline-none!"
+          popupClassName="text-red-400!"
+          getPopupContainer={(triggerNode) => triggerNode.parentNode.parentNode}
+          onChange={(date, dateString) => setCar({ ...car, year: dateString })}
           />
         </label>
 
@@ -115,7 +135,7 @@ function EditCar({ car, setCar, cars}) {
             required
           >
             <option value="">Select Image</option>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => (
               <option key={n} value={`/images/car${n}.png`}>Car {n}</option>
             ))}
           </select>
@@ -137,9 +157,13 @@ function EditCar({ car, setCar, cars}) {
           <button type="button" onClick={cancelEdit} className="btn btn-outline">
             <FontAwesomeIcon icon={faTimes} /> Cancel
           </button>
-          <button type="submit" className="btn btn-primary">
-            <FontAwesomeIcon icon={faCheck} /> Save
-          </button>
+          <Popconfirm placement="topLeft" title="Save Changes?" description="Are you sure you want to save the changes?"
+            onConfirm={handleEdit} okText="Yes" cancelText="No" getPopupContainer={(triggerNode) => triggerNode.parentNode}
+            icon={<CircleHelp size={16} className="m-1" />}>
+            <div className="btn btn-primary">
+              <FontAwesomeIcon icon={faCheck} /> Save
+            </div>
+          </Popconfirm>
         </div>
       </form>
     </div>

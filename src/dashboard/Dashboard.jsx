@@ -72,6 +72,7 @@ export default function Dashboard() {
     .sort((a, b) => b.value - a.value)
     .slice(0, 5)
 
+
   // Group contracts by month for revenue trend
   const monthlyRevenue = {}
   contracts.forEach((contract) => {
@@ -122,12 +123,11 @@ export default function Dashboard() {
   })
   const clientAgeData = Object.entries(ageGroups).map(([range, count]) => ({ range, count }))
 
-  // Colors for charts (adjusted for sunset theme)
   const [primary, accent, secondary, base] = ["#ff865b", "#b387fa", "#fd6f9c", "#9fb9d0"]
   const COLORS = [
     "#ff865b", // Primary
     "#b387fa", // Accent
-    "#ffa280",
+    "#fd6f9c", // secondary
     "#cca5fc",
     "#ffbea6",
     "#e5c3fd",
@@ -142,11 +142,11 @@ export default function Dashboard() {
       <h1 className="text-4xl font-bold mb-6 text-base-content">Analytics Dashboard</h1>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-6 lg:gap-16 lg:mx-12 my-8">
         <Card className="bg-base-300 border-accent">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-base-content">Total Cars</CardTitle>
-            <Car className="h-4 w-4 text-primary" />
+            <Car className="mb-2 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-base-content">{totalCars}</div>
@@ -159,7 +159,7 @@ export default function Dashboard() {
         <Card className="bg-base-300 border-accent">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-base-content">Total Clients</CardTitle>
-            <Users className="h-4 w-4 text-primary" />
+            <Users className="mb-2 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-base-content">{clients.length}</div>
@@ -169,7 +169,7 @@ export default function Dashboard() {
         <Card className="bg-base-300 border-accent">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-base-content">Active Contracts</CardTitle>
-            <FileText className="h-4 w-4 text-primary" />
+            <FileText className="mb-2 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-base-content">{activeContracts}</div>
@@ -180,7 +180,7 @@ export default function Dashboard() {
         <Card className="bg-base-300 border-accent">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-base-content">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-primary" />
+            <DollarSign className="mb-2 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-base-content">€{totalRevenue.toFixed(0)}</div>
@@ -189,7 +189,7 @@ export default function Dashboard() {
       </div>
 
       {/* Charts Row 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-6 lg:gap-16 lg:mx-12 mt-16">
         {/* Car Types Pie Chart */}
         <Card className="bg-base-200 border-primary">
           <CardHeader>
@@ -215,7 +215,7 @@ export default function Dashboard() {
                     ))}
                   </Pie>
                   <Tooltip
-                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none" }}
+                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none", borderRadius: "12px" }}
                     itemStyle={{ color: "#fff" }}
                   />
                 </PieChart>
@@ -237,7 +237,7 @@ export default function Dashboard() {
                   <XAxis dataKey="month" stroke={secondary} />
                   <YAxis stroke={secondary} />
                   <Tooltip
-                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none" }}
+                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none", borderRadius: "12px" }}
                     itemStyle={{ color: "#fff" }}
                   />
                   <Line type="monotone" dataKey="amount" stroke={accent} strokeWidth={2} />
@@ -246,10 +246,6 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
-      </div>
-
-      {/* Charts Row 2 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Car Availability by Type */}
         <Card className="bg-base-300 border-primary">
           <CardHeader>
@@ -263,7 +259,7 @@ export default function Dashboard() {
                   <XAxis dataKey="name" stroke={secondary} />
                   <YAxis stroke={secondary} />
                   <Tooltip
-                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none" }}
+                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none", borderRadius: "12px"  }}
                     itemStyle={{ color: "#fff" }}
                   />
                   <Legend />
@@ -274,33 +270,6 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
-
-        {/* Popular Car Brands */}
-        <Card className="bg-base-300 border-primary">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold text-primary">Popular Car Brands</CardTitle>
-            <CardDescription className="text-base-content/70">Top 5 brands in the fleet</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="h-80">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={popularBrands} layout="vertical">
-                  <XAxis type="number" stroke={secondary} />
-                  <YAxis dataKey="name" type="category" stroke={secondary} />
-                  <Tooltip
-                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none" }}
-                    itemStyle={{ color: "#fff" }}
-                  />
-                  <Bar dataKey="value" fill="#ff865b" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* New Charts Row 3 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {/* Contract Duration vs Revenue Scatter Plot */}
         <Card className="bg-base-300 border-primary">
           <CardHeader>
@@ -317,7 +286,7 @@ export default function Dashboard() {
                   <YAxis type="number" dataKey="revenue" name="Revenue" unit="€" stroke={secondary} />
                   <Tooltip
                     cursor={{ strokeDasharray: "3 3" }}
-                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none" }}
+                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none", borderRadius: "12px"  }}
                     itemStyle={{ color: "#fff" }}
                   />
                   <Scatter name="Contracts" data={contractDurationData} fill="#ff865b" />
@@ -326,35 +295,6 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
-
-        {/* Popular Car Models Bar Chart */}
-        <Card className="bg-base-300 border-primary">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold text-primary">Popular Car Models</CardTitle>
-            <CardDescription className="text-base-content/70">
-              Top 10 most common car models in the fleet
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="h-80">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={popularModels} layout="vertical">
-                  <XAxis type="number" stroke={secondary} />
-                  <YAxis type="category" dataKey="name" stroke={secondary} />
-                  <Tooltip
-                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none" }}
-                    itemStyle={{ color: "#fff" }}
-                  />
-                  <Bar dataKey="value" fill="#b387fa" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* New Charts Row 4 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {/* Client Age Distribution */}
         <Card className="bg-base-300 border-primary">
           <CardHeader>
@@ -368,7 +308,7 @@ export default function Dashboard() {
                   <XAxis dataKey="range" stroke={secondary} />
                   <YAxis stroke={secondary} />
                   <Tooltip
-                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none" }}
+                    contentStyle={{ backgroundColor: "rgba(0, 0, 0, 0.8)", border: "none", borderRadius: "12px"  }}
                     itemStyle={{ color: "#fff" }}
                   />
                   <Bar dataKey="count" fill="#ff865b">
@@ -381,8 +321,6 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
-
-        {/* You can add another chart here if needed */}
       </div>
     </div>
   )

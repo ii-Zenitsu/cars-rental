@@ -1,18 +1,19 @@
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ContractPDF from "../components/ContractPDF";
 
 export default function ShowContract() {
   const navigate = useNavigate();
   const { id } = useParams();
-  
-  const contract = useSelector((state) => state.contracts.find((contract) => contract.id.toString() === id));
-  const cars = useSelector(state => state.cars);
-  const clients = useSelector(state => state.clients);
-  const car = contract.getCar(cars)
-  const client = contract.getClient(clients)
 
+  const contract = useSelector((state) => state.contracts.find((contract) => contract.id.toString() === id));
+  const cars = useSelector((state) => state.cars);
+  const clients = useSelector((state) => state.clients);
+  const car = contract.getCar(cars);
+  const client = contract.getClient(clients);
 
   return (
     <div className="flex justify-center mt-4">
@@ -29,11 +30,11 @@ export default function ShowContract() {
           </div>
           <div className="flex gap-3 text-lg justify-between">
             <div className="font-semibold">Car ID<span className="badge badge-outline mb-1.5 ml-3">{car.id}</span></div>
-            <Link className="link link-primary" to={`/cars/${car.id}`} >{car.getName()}</Link>
+            <Link className="link link-primary" to={`/cars/${car.id}`}>{car.getName()}</Link>
           </div>
           <div className="flex gap-3 text-lg justify-between">
             <div className="font-semibold">Client ID<span className="badge badge-outline mb-1.5 ml-3">{client.id}</span></div>
-            <Link className="link link-primary" to={`/clients/${client.id}`} >{client.getFullName()}</Link>
+            <Link className="link link-primary" to={`/clients/${client.id}`}>{client.getFullName()}</Link>
           </div>
           <div className="flex gap-3 text-lg justify-between">
             <div className="font-semibold">Start Date</div>
@@ -58,6 +59,21 @@ export default function ShowContract() {
           <div className="flex gap-3 text-lg justify-between">
             <div className="font-semibold">Status</div>
             <span className={`badge badge-soft badge-lg w-32 ${contract.getStatus() ? "badge-success" : "badge-secondary"}`}>{contract.getStatus() ? "Active" : "Expired"}</span>
+          </div>
+          {/* Download PDF Button */}
+          <div className="flex justify-center mt-6">
+            <PDFDownloadLink
+              document={<ContractPDF contract={contract} car={car} client={client} />}
+              fileName={`contract_${contract.id}.pdf`}
+              className="btn btn-primary"
+            >
+              {({ loading }) => (
+                <div className="flex items-center gap-2">
+                  <FontAwesomeIcon icon={faDownload} />
+                  {loading ? "Generating PDF..." : "Download Contract as PDF"}
+                </div>
+              )}
+            </PDFDownloadLink>
           </div>
         </div>
       </div>

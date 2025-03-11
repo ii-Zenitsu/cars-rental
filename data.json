@@ -16,9 +16,9 @@
       "model": "Civic",
       "year": "2023",
       "price": "60",
-      "image": "/images/car2.png",
+      "image": "/images/car15.png",
       "type": "petrol",
-      "available": true
+      "available": false
     },
     {
       "id": "3",
@@ -26,9 +26,9 @@
       "model": "Focus",
       "year": "2021",
       "price": "45",
-      "image": "/images/car3.png",
+      "image": "/images/car12.png",
       "type": "diesel",
-      "available": true
+      "available": false
     },
     {
       "id": "4",
@@ -46,7 +46,7 @@
       "model": "C-Class",
       "year": "2022",
       "price": "90",
-      "image": "/images/car5.png",
+      "image": "/images/car14.png",
       "type": "hybrid",
       "available": true
     },
@@ -86,7 +86,7 @@
       "model": "Malibu",
       "year": "2022",
       "price": "65",
-      "image": "/images/car9.png",
+      "image": "/images/car11.png",
       "type": "hybrid",
       "available": true
     },
@@ -126,7 +126,7 @@
       "model": "Mustang",
       "year": "2023",
       "price": "120",
-      "image": "/images/car3.png",
+      "image": "/images/car12.png",
       "type": "petrol",
       "available": true
     },
@@ -144,9 +144,9 @@
       "id": "15",
       "brand": "Mercedes",
       "model": "E-Class",
-      "year": "2023",
-      "price": "130",
-      "image": "/images/car5.png",
+      "year": "2022",
+      "price": "100",
+      "image": "/images/car14.png",
       "type": "hybrid",
       "available": true
     },
@@ -164,8 +164,8 @@
       "id": "17",
       "brand": "Nissan",
       "model": "Rogue",
-      "year": "2023",
-      "price": "75",
+      "year": "2022",
+      "price": "175",
       "image": "/images/car7.png",
       "type": "petrol",
       "available": false
@@ -175,7 +175,7 @@
       "brand": "Tesla",
       "model": "Model S",
       "year": "2023",
-      "price": "150",
+      "price": "170",
       "image": "/images/car8.png",
       "type": "electric",
       "available": false
@@ -186,7 +186,7 @@
       "model": "Equinox",
       "year": "2022",
       "price": "70",
-      "image": "/images/car9.png",
+      "image": "/images/car11.png",
       "type": "petrol",
       "available": false
     },
@@ -208,7 +208,7 @@
       "price": "90",
       "image": "/images/car1.png",
       "type": "hybrid",
-      "available": true
+      "available": false
     },
     {
       "id": "22",
@@ -226,7 +226,7 @@
       "model": "Escape",
       "year": "2023",
       "price": "75",
-      "image": "/images/car3.png",
+      "image": "/images/car12.png",
       "type": "hybrid",
       "available": false
     },
@@ -234,27 +234,27 @@
       "id": "24",
       "brand": "BMW",
       "model": "X3",
-      "year": "2022",
-      "price": "105",
+      "year": "2021",
+      "price": "85",
       "image": "/images/car4.png",
       "type": "petrol",
-      "available": true
+      "available": false
     },
     {
       "id": "25",
       "brand": "Mercedes",
       "model": "GLC",
-      "year": "2023",
-      "price": "125",
-      "image": "/images/car5.png",
+      "year": "2021",
+      "price": "115",
+      "image": "/images/car14.png",
       "type": "hybrid",
-      "available": true
+      "available": false
     },
     {
       "id": "26",
       "brand": "Audi",
       "model": "A6",
-      "year": "2022",
+      "year": "2024",
       "price": "120",
       "image": "/images/car6.png",
       "type": "diesel",
@@ -274,7 +274,7 @@
       "id": "28",
       "brand": "Tesla",
       "model": "Model Y",
-      "year": "2023",
+      "year": "2021",
       "price": "140",
       "image": "/images/car8.png",
       "type": "electric",
@@ -286,7 +286,7 @@
       "model": "Traverse",
       "year": "2022",
       "price": "85",
-      "image": "/images/car9.png",
+      "image": "/images/car11.png",
       "type": "petrol",
       "available": true
     },
@@ -295,7 +295,7 @@
       "brand": "Hyundai",
       "model": "Santa Fe",
       "year": "2023",
-      "price": "75",
+      "price": "155",
       "image": "/images/car10.png",
       "type": "hybrid",
       "available": true
@@ -594,6 +594,41 @@
       "clientId": "client8",
       "startDate": "2025-05-01",
       "endDate": "2025-11-01"
+    },
+    {
+      "id": "9d47",
+      "clientId": "878b",
+      "carId": "21",
+      "startDate": "2025-03-13",
+      "endDate": "2025-03-20"
+    },
+    {
+      "id": "cb37",
+      "clientId": "878b",
+      "carId": "24",
+      "startDate": "2025-03-21",
+      "endDate": "2025-03-24"
+    },
+    {
+      "id": "cb05",
+      "clientId": "d809",
+      "carId": "25",
+      "startDate": "2025-03-19",
+      "endDate": "2025-04-21"
+    },
+    {
+      "id": "e964",
+      "clientId": "client1",
+      "carId": "3",
+      "startDate": "2025-03-12",
+      "endDate": "2025-03-19"
+    },
+    {
+      "id": "e425",
+      "clientId": "client1",
+      "carId": "2",
+      "startDate": "2025-03-13",
+      "endDate": "2025-04-14"
     }
   ]
 }

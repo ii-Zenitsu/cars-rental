@@ -6,6 +6,7 @@ import { faArrowRight, faArrowLeft, faCheck } from "@fortawesome/free-solid-svg-
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { createUser } from "../service/FetchData";
 
 export default function FormTabs() {
     const [activeTab, setActiveTab] = useState("Sign Up");
@@ -122,6 +123,11 @@ function Step1({user, setUser, confirmPass, setConfirmPass, errors, setStep, set
             </p>
             <form className="mt-6" onSubmit={nextStep} >
                 <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-1">
+                    {/* <label className="floating-label w-full not-focus-within:[&>span]:text-sm">
+                        <input className="input w-full validator" placeholder="First name" type="text" onChange={e => setUser({ ...user, firstName: e.target.value.trim() })} value={user.firstName} required />
+                        <div className="validator-hint">Enter valid name</div>
+                        <span className="text-xl" >First name</span>
+                    </label> */}
                     <div className="w-full">
                         <label className="fieldset-label" htmlFor="firstname">First name</label>
                         <input id="firstname" className="input w-full validator" placeholder="Enter first name" type="text" onChange={e => setUser({ ...user, firstName: e.target.value.trim() })} value={user.firstName} required />
@@ -264,23 +270,4 @@ export function LoginForm({ setActiveTab }) {
             <button className="btn btn-accent btn-soft" onClick={() => setActiveTab("Sign Up")}>Sign Up</button>
         </fieldset>
     );
-}
-
-function createUser(user) {
-    return ({...user,
-        getFullName : function() { return this.firstName + " " + this.lastName; },
-        getInfo : function() { return this.id + " : " + this.getFullName(); },
-        getContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id)},
-        getAge : function() {
-          const birthDate = new Date(this.date_birthday);
-          const today = new Date();
-          
-          let age = today.getFullYear() - birthDate.getFullYear();
-          const monthDiff = today.getMonth() - birthDate.getMonth();
-          const dayDiff = today.getDate() - birthDate.getDate();
-          if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) { age--;}
-          
-          return age;
-        }
-      })
 }

@@ -12,4 +12,22 @@ const ProtectedRoute = ({ requiredRole }) => {
   return <Outlet />;
 };
 
-export default ProtectedRoute;
+const ProtectedRouteAdmin = () => {
+  const user = useSelector(state => state.user);
+
+  if (!user || user.role !== "admin") {
+    return <Navigate to="/" replace />;
+  }
+  return <Outlet />;
+};
+
+const ProtectedRouteUser = () => {
+  const user = useSelector(state => state.user);
+
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
+  return <Outlet />;
+};
+
+export {ProtectedRoute, ProtectedRouteAdmin, ProtectedRouteUser};

@@ -8,7 +8,8 @@ import { faCircleInfo, faPenToSquare, faPlus, faTrash } from "@fortawesome/free-
 import { useDispatch, useSelector } from "react-redux";
 import { useUpdateCarAvailability } from "../service/FetchData";
 import Fuse from "fuse.js";
-import { Button, Modal } from 'antd';
+import { message, Popconfirm } from 'antd';
+import { CircleCheckBig, CircleHelp, CircleX } from "lucide-react";
 
 
 
@@ -16,7 +17,6 @@ function CarsList() {
   useUpdateCarAvailability();
   const cars = useSelector(state => state.cars);
   
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [car, setCar] = useState({});
   const [nextId, setNextId] = useState("1");
   
@@ -26,15 +26,19 @@ function CarsList() {
   
   const dispatch = useDispatch()
 
- 
-
   const carsFuse = new Fuse(getRes(), {keys: ["brand", "model", "year", "type"], threshold: 0.3})
-  const results = query ? carsFuse.search(query).map(r => r.item) : getRes();
+  const items = query ? carsFuse.search(query).map(r => r.item) : getRes();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const results = items.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(items.length / itemsPerPage);
   
-  const petrol = cars.filter(c => c.type === "petrol").length
-  const diesel = cars.filter(c => c.type === "diesel").length
-  const electric = cars.filter(c => c.type === "electric").length
-  const hybrid = cars.filter(c => c.type === "hybrid").length
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   function toggleType(type) {
     types.includes(type) ? setTypes(types.filter(t => t !== type)) : setTypes([...types, type])
@@ -64,21 +68,23 @@ function CarsList() {
 
   const deleteCar = (id) => {
     axios.delete(`http://localhost:3001/cars/${id}`).then(() => {
+      message.open({
+        className: "text-success",
+        content: `Car with ID ${id} is deleted`,
+        duration: 3,
+        icon: <CircleCheckBig size={16} className="mr-1" />,
+      });
       dispatch({ type: "UPDATE_CARS", payload: cars.filter(c => c.id !== id) });
     });
   };
 
-  
-  const showDeleteModal = (id) => {
-    setCar(cars.find((car) => car.id === id));
-    setIsModalOpen(true);
-  }
-
-  const handleCancel = () => {setIsModalOpen(false);};
-
-  const handleOk = () => {
-    deleteCar(car.id)
-    setIsModalOpen(false);
+  const cancelDelete = () => {
+    message.open({
+      className: "text-secondary",
+      content: "Delete canceled",
+      duration: 3,
+      icon: <CircleX size={16} className="mr-1" />,
+    });
   };
 
 
@@ -102,16 +108,20 @@ function CarsList() {
         <button className="join-item btn btn-outline btn-info btn-sm" onClick={() => handleAdd()}><FontAwesomeIcon icon={faPlus} />New car</button>
       </div>
       <div className="flex justify-end p-3 gap-3">
-        <div className="flex gap-1.5 mr-auto">
-          <button className={`btn btn-outline btn-primary btn-sm rounded-full capitalize ${types.includes("petrol") ? "btn-active" : ""}`} onClick={() => toggleType("petrol")}>petrol {getTotalOf("petrol")} - {getPerOf("petrol")}%</button>
+        <div className="flex gap-1.5">
+          <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("petrol") ? "btn-active" : ""}`} onClick={() => toggleType("petrol")}>petrol</button>
+          <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("diesel") ? "btn-active" : ""}`} onClick={() => toggleType("diesel")}>diesel</button>
+          <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("electric") ? "btn-active" : ""}`} onClick={() => toggleType("electric")}>electric</button>
+          <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("hybrid") ? "btn-active" : ""}`} onClick={() => toggleType("hybrid")}>hybrid</button>
+          {/* <button className={`btn btn-outline btn-primary btn-sm rounded-full capitalize ${types.includes("petrol") ? "btn-active" : ""}`} onClick={() => toggleType("petrol")}>petrol {getTotalOf("petrol")} - {getPerOf("petrol")}%</button>
           <button className={`btn btn-outline btn-primary btn-sm rounded-full capitalize ${types.includes("diesel") ? "btn-active" : ""}`} onClick={() => toggleType("diesel")}>diesel {getTotalOf("diesel")} - {getPerOf("diesel")}%</button>
           <button className={`btn btn-outline btn-primary btn-sm rounded-full capitalize ${types.includes("electric") ? "btn-active" : ""}`} onClick={() => toggleType("electric")}>electric {getTotalOf("electric")} - {getPerOf("electric")}%</button>
-          <button className={`btn btn-outline btn-primary btn-sm rounded-full capitalize ${types.includes("hybrid") ? "btn-active" : ""}`} onClick={() => toggleType("hybrid")}>hybrid {getTotalOf("hybrid")} - {getPerOf("hybrid")}%</button>
+          <button className={`btn btn-outline btn-primary btn-sm rounded-full capitalize ${types.includes("hybrid") ? "btn-active" : ""}`} onClick={() => toggleType("hybrid")}>hybrid {getTotalOf("hybrid")} - {getPerOf("hybrid")}%</button> */}
         </div>
         <select className="select select-sm w-1/8" onChange={(e) => setFilter(e.target.value)}>
           <option value="" >All Brands</option>
             {getAllBrands(cars).map(b => (
-              <option value={b}>{b}</option>
+              <option key={b} value={b}>{b}</option>
             ))}
         </select>
         <label className="input input-sm w-1/6">
@@ -119,6 +129,7 @@ function CarsList() {
           <input type="search" className="grow" onChange={(e) => setQuery(e.target.value)} placeholder="Search" />
         </label>
       </div>
+      <div className="divider after:bg-gray-700 before:bg-gray-700 my-0 mx-4"></div>
       <div className="overflow-x-auto">
         <table className="table text-center">
           <thead>
@@ -174,9 +185,13 @@ function CarsList() {
                     <button className="join-item btn btn-outline btn-warning btn-sm" onClick={() => handleModify(car.id)}>
                       <FontAwesomeIcon icon={faPenToSquare} /> Edit
                     </button>
-                    <button className="join-item btn btn-outline btn-secondary btn-sm" onClick={() => showDeleteModal(car.id)}>
-                      <FontAwesomeIcon icon={faTrash} /> Delete
-                    </button>
+                    <Popconfirm placement="topLeft" title="Delete the Car?" description={`Are you sure you want to delete this Car ID ${car.getInfo()}?`}
+                      onConfirm={() => deleteCar(car.id)} onCancel={cancelDelete} okText="Yes" cancelText="No"
+                      icon={<CircleHelp size={16} className="m-1" />}>
+                      <button className="join-item btn btn-outline btn-secondary btn-sm">
+                        <FontAwesomeIcon icon={faTrash} /> Delete
+                      </button>
+                    </Popconfirm>
                   </div>
                 </th>
               </tr>
@@ -199,9 +214,15 @@ function CarsList() {
             <button>close</button>
           </form>
         </dialog>
-        <Modal title="Confirm Delete" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-          <p>Are you sure you want to delete this Car ID {car.id && car.getInfo()}?</p>
-        </Modal>
+      </div>
+      <div className="flex justify-center gap-2 my-4">
+        <button className="btn btn-sm btn-outline btn-primary transition-colors duration-300" onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1}>❮</button>
+
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <button key={page} className={`btn btn-sm btn-outline btn-primary transition-colors duration-300 ${currentPage === page ? "btn-active" : ""}`} onClick={() => paginate(page)}>{page}</button>
+        ))}
+
+        <button className="btn btn-sm btn-outline btn-primary transition-colors duration-300" onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>❯</button>
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ import Fuse from "fuse.js";
 
 function ContractsList() {
   const [contract, setContract] = useState({});
-  const [nextId, setNextId] = useState("1");
   const [query, setQuery] = useState("");
   
   const dispatch = useDispatch();
@@ -34,7 +33,6 @@ function ContractsList() {
   };
 
   function handleAddContract() {
-    setNextId( contracts.length > 0 ? String(Math.max(...contracts.map((contract) => contract.id)) + 1) : "1" );
     document.getElementById("addModal").showModal();
   }
 
@@ -133,7 +131,7 @@ function ContractsList() {
         </dialog>
         <dialog id="addModal" className="modal">
           <div className="modal-box">
-            <AddContract contracts={contracts} nextId={nextId}/>
+            <AddContract contracts={contracts}/>
           </div>
           <form method="dialog" className="modal-backdrop">
             <button>close</button>

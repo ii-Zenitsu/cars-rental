@@ -2,22 +2,43 @@ import React from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
-
 import { useDispatch } from "react-redux";
+import { message, Popconfirm } from "antd";
+import { CircleCheckBig, CircleHelp } from "lucide-react";
 
 function EditClient({ client, setClient, clients }) {
   const dispatch = useDispatch();
-  
+
   function cancelEdit() {
     document.getElementById("modifyModal").close();
   }
 
-  function handleEdit(e) {
-    e.preventDefault();
-    axios.put(`http://localhost:3001/clients/${client.id}`, client).then(() => {
+  
+  function validate() {
+    for (const [key, value] of Object.entries(client)) {
+      if (!value) {
+        alert(`Please fill in the ${key.replace("Id", "")} field.`)
+        return false;
+      }
+    }
+    return true;
+  }
+    
+    function handleEdit() {
+    if (!validate()) return;
+    axios
+      .put(`http://localhost:3001/clients/${client.id}`, client)
+      .then(() => {
         cancelEdit();
         dispatch({ type: "UPDATE_CLIENTS", payload: clients.map((c) => (c.id === client.id ? client : c)) });
+        message.open({
+          className: "text-success",
+          content: "All changes are saved",
+          duration: 3,
+          icon: <CircleCheckBig size={16} className="mr-1" />,
+        });
       })
+      .catch((error) => console.error("Error updating client:", error));
   }
 
   return (
@@ -29,7 +50,7 @@ function EditClient({ client, setClient, clients }) {
         </div>
       </div>
 
-      <form onSubmit={handleEdit} className="space-y-4 flex flex-col">
+      <form className="space-y-4 flex flex-col">
         <label className="form-control w-full max-w-2xl">
           <div className="label">
             <span className="label-text">First Name</span>
@@ -109,8 +130,23 @@ function EditClient({ client, setClient, clients }) {
         </label>
 
         <div className="flex justify-between mt-4">
-          <button type="button" onClick={cancelEdit} className="btn btn-outline"><FontAwesomeIcon icon={faTimes} /> Cancel</button>
-          <button type="submit" className="btn btn-primary"><FontAwesomeIcon icon={faCheck} /> Save</button>
+          <button type="button" onClick={cancelEdit} className="btn btn-outline">
+            <FontAwesomeIcon icon={faTimes} /> Cancel
+          </button>
+          <Popconfirm
+            placement="topLeft"
+            title="Save Changes?"
+            description="Are you sure you want to save the changes?"
+            onConfirm={handleEdit}
+            okText="Yes"
+            cancelText="No"
+            getPopupContainer={(triggerNode) => triggerNode.parentNode}
+            icon={<CircleHelp size={16} className="m-1" />}
+          >
+            <div className="btn btn-primary">
+              <FontAwesomeIcon icon={faCheck} /> Save
+            </div>
+          </Popconfirm>
         </div>
       </form>
     </div>

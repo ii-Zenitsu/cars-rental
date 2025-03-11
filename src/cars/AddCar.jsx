@@ -3,15 +3,16 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { DatePicker} from "antd";
+import { DatePicker, message, Popconfirm} from "antd";
 import dayjs from 'dayjs';
+import { createCar } from "../service/FetchData";
+import { CircleCheckBig, CircleHelp } from "lucide-react";
 
 
-function AddCar({ cars, nextId }) {
+function AddCar({ cars }) {
   const dispatch = useDispatch();
 
   const [car, setCar] = useState({
-    id: nextId,
     brand: "",
     model: "",
     year: Date(),
@@ -29,12 +30,28 @@ function AddCar({ cars, nextId }) {
     setCar({...car, brand: "", model: "", year: Date(), price: "", type: "", image: ""});
   }
 
-  function handleAdd(e) {
-    e.preventDefault();
-    const newCar = { ...car, id: nextId };
-    axios.post("http://localhost:3001/cars", newCar).then((res) => {
+  function validate() {
+    for (const [key, value] of Object.entries(car)) {
+      if (!value) {
+        alert(`Please fill in the ${key.replace("Id", "")} field.`)
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function handleAdd() {
+    if (!validate()) return;
+
+    axios.post("http://localhost:3001/cars", car).then((res) => {
         cancelAdd();
-        dispatch({ type: "UPDATE_CARS", payload: [...cars, newCar] });
+        dispatch({ type: "UPDATE_CARS", payload: [...cars, createCar(res.data)] });
+        message.open({
+          className: "text-success",
+          content: `car added successfully`,
+          duration: 3,
+          icon: <CircleCheckBig size={16} className="mr-1" />,
+        });
       })
       .catch((error) => console.error("Error adding car:", error));
   }
@@ -44,11 +61,10 @@ function AddCar({ cars, nextId }) {
       <div className="flex flex-wrap justify-between items-center gap-6 mb-4">
         <div className="flex gap-4 items-center">
           <h1 className="text-4xl text-center">Add Car</h1>
-          <span className="badge badge-outline badge-lg mt-2">{nextId}</span>
         </div>
       </div>
 
-      <form onSubmit={handleAdd} className="space-y-4 flex flex-col">
+      <form className="space-y-4 flex flex-col">
         <label className="form-control w-full max-w-2xl">
           <div className="label">
             <span className="label-text">Brand</span>
@@ -86,9 +102,8 @@ function AddCar({ cars, nextId }) {
           maxDate={dayjs()}
           className="input! input-bordered! w-full! text-neutral-400! focus-within:outline-none!"
           popupClassName="text-red-400!"
-          getPopupContainer={(triggerNode) => triggerNode.parentNode}
-          // onChange={(date, dateString) => setCar({ ...car, year: dateString })}
-          onSelect={(date, dateString) => setCar((prevCar) => ({ ...prevCar, year: dateString }))}
+          getPopupContainer={(triggerNode) => triggerNode.parentNode.parentNode}
+          onChange={(date, dateString) => setCar({ ...car, year: dateString })}
           />
         </label>
 
@@ -134,7 +149,7 @@ function AddCar({ cars, nextId }) {
             required
           >
             <option value="">Select Image</option>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => (
               <option key={n} value={`/images/car${n}.png`}>
                 Car {n}
               </option>
@@ -154,35 +169,17 @@ function AddCar({ cars, nextId }) {
           />
         </label>
 
-        {/* <label className="form-control w-full max-w-2xl">
-          <div className="label">
-            <span className="label-text">Image</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <input
-              type="file"
-              name="image"
-              className="file-input file-input-bordered w-full"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
-            {imagePreview && (
-              <img
-                src={imagePreview}
-                alt="Car Preview"
-                className="w-1/6 h-1/6 rounded-lg shadow-lg"
-              />
-            )}
-          </div>
-        </label> */}
-
         <div className="flex justify-between mt-4">
           <button type="button" onClick={cancelAdd} className="btn btn-outline">
             <FontAwesomeIcon icon={faTimes} /> Cancel
           </button>
-          <button type="submit" className="btn btn-primary">
-            <FontAwesomeIcon icon={faCheck} /> Save
-          </button>
+          <Popconfirm placement="topLeft" title="add car?" description="Are you sure you want to add this car?"
+            onConfirm={handleAdd} okText="Yes" cancelText="No" getPopupContainer={(triggerNode) => triggerNode.parentNode}
+            icon={<CircleHelp size={16} className="m-1" />}>
+            <div className="btn btn-primary">
+              <FontAwesomeIcon icon={faCheck} /> Save
+            </div>
+          </Popconfirm>
         </div>
       </form>
     </div>

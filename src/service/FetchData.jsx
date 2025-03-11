@@ -14,9 +14,9 @@ const useFetchData = () => {
       axios.get("http://localhost:3001/clients"),
       axios.get("http://localhost:3001/contracts"),
     ]).then(([carsRes, clientsRes, contractsRes]) => {
-        dispatch({ type: "UPDATE_CARS", payload: createCars(carsRes.data) });
-        dispatch({ type: "UPDATE_CLIENTS", payload: createClients(clientsRes.data) });
-        dispatch({ type: "UPDATE_CONTRACTS", payload: createContracts(contractsRes.data) });
+        dispatch({ type: "UPDATE_CARS", payload: carsRes.data.map(c => createCar(c)) });
+        dispatch({ type: "UPDATE_CLIENTS", payload: clientsRes.data.map(c => createClient(c)) });
+        dispatch({ type: "UPDATE_CONTRACTS", payload: contractsRes.data.map(c => createContract(c)) });
 
         const email = localStorage.getItem("user_email");
         if (email) {
@@ -79,8 +79,29 @@ const useUpdateCarAvailability = () => {
 
 };
 
-function createCars(cars) {
-  return cars.map(c => ({...c,
+
+function createUser(user) {
+  return ({...user,
+      getFullName : function() { return this.firstName + " " + this.lastName; },
+      getInfo : function() { return this.id + " : " + this.getFullName(); },
+      getContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id)},
+      getActiveContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id && c.getStatus())},
+      getAge : function() {
+        const birthDate = new Date(this.date_birthday);
+        const today = new Date();
+        
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        const dayDiff = today.getDate() - birthDate.getDate();
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) { age--;}
+        
+        return age;
+      }
+    })
+}
+
+function createCar(car) {
+  return ({...car,
     getName : function() { return this.brand + " " + this.model; },
     getInfo : function() { return this.id + " : " + this.getName(); },
     getContracts : function(contracts) { return contracts.filter(c => c.carId === this.id)},
@@ -92,30 +113,38 @@ function createCars(cars) {
       const diffMs = new Date(activeContract.endDate) - new Date();
       return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
     },
-  }) )
+    getAvailabilityDate: function(contracts) {
+      const activeContract = contracts.find(
+        contract => contract.carId === this.id && new Date(contract.endDate) > new Date()
+      );
+      if (!activeContract) {return new Date();}
+      return new Date(activeContract.endDate)
+    },
+    })
 }
 
-function createClients(clients) {
-  return clients.map(c => ({...c,
-    getFullName : function() { return this.firstName + " " + this.lastName; },
-    getInfo : function() { return this.id + " : " + this.getFullName(); },
-    getContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id)},
-    getAge : function() {
-      const birthDate = new Date(this.date_birthday);
-      const today = new Date();
-      
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const monthDiff = today.getMonth() - birthDate.getMonth();
-      const dayDiff = today.getDate() - birthDate.getDate();
-      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) { age--;}
-      
-      return age;
-    }
-  }) )
+function createClient(client) {
+  return ({...client,
+      getFullName : function() { return this.firstName + " " + this.lastName; },
+      getInfo : function() { return this.id + " : " + this.getFullName(); },
+      getContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id)},
+      getActiveContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id && c.getStatus())},
+      getAge : function() {
+        const birthDate = new Date(this.date_birthday);
+        const today = new Date();
+        
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        const dayDiff = today.getDate() - birthDate.getDate();
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) { age--;}
+        
+        return age;
+      }
+    })
 }
 
-function createContracts(contracts) {
-  return contracts.map(c => ({...c,
+function createContract(contract) {
+  return ({...contract,
     getClient : function(clients) { return clients.find(c => c.id === this.clientId)},
     getCar : function(cars) { return cars.find(c => c.id === this.carId)},
     getStatus : function() { return new Date(this.endDate) > new Date() ? true : false;},
@@ -132,26 +161,9 @@ function createContracts(contracts) {
       
       return car.price * daysDiff;
     },
-  }) )
-}
-
-function createUser(user) {
-  return ({...user,
-      getFullName : function() { return this.firstName + " " + this.lastName; },
-      getInfo : function() { return this.id + " : " + this.getFullName(); },
-      getContracts : function(contracts) { return contracts.filter(c => c.clientId === this.id)},
-      getAge : function() {
-        const birthDate = new Date(this.date_birthday);
-        const today = new Date();
-        
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        const dayDiff = today.getDate() - birthDate.getDate();
-        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) { age--;}
-        
-        return age;
-      }
     })
 }
 
-export {useUpdateCarAvailability, useFetchData};
+
+
+export {useUpdateCarAvailability, useFetchData, createCar, createClient, createUser, createContract};

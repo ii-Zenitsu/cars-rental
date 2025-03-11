@@ -6,13 +6,14 @@ import ContractsList from "./contracts/ContractsList"
 import ShowCar from "./cars/ShowCar"
 import ShowClient from "./clients/ShowClient"
 import ShowContract from "./contracts/ShowContract"
+import MyContracts from "./components/MyContracts"
 import Dashboard from "./dashboard/Dashboard"
 import HomePage from "./home/HomePage"
 import FormTabs from "./components/Signup"
 import SearchResults from "./home/SearchResults"
 import { ConfigProvider } from "antd"
 import { useFetchData } from "./service/FetchData"
-import ProtectedRoute from "./components/ProtectedRoute"
+import { ProtectedRoute, ProtectedRouteUser} from "./components/ProtectedRoute"
 
 function App() {
   const loading = useFetchData()
@@ -40,6 +41,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/sign" element={<FormTabs />} />
             <Route path="/search" element={<SearchResults />} />
+            <Route element={<ProtectedRouteUser />}>
+              <Route path="/my-contracts" element={<MyContracts />} />
+            </Route>
 
             {/* Protected routes for admin */}
             <Route element={<ProtectedRoute requiredRole="admin" />}>

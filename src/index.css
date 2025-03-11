@@ -6,10 +6,15 @@
 
 @layer components {
   .border-sh {
-      @apply border-2 border-l-gray-300 dark:border-neutral shadow-lg shadow-neutral-950;
+      @apply border-2 border-gray-300 dark:border-neutral shadow-lg shadow-neutral-950;
+  }
+  .color-scale-trans {
+    transition-property: color, scale, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .ant-message-notice-content {
-       @apply capitalize btn! btn-success! btn-soft! hover:cursor-text!;
+       @apply capitalize transition-colors bg-base-200! font-bold;
   }
 }
 
