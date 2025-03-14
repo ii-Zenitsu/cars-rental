@@ -42,7 +42,12 @@ function App() {
             <Route path="/sign" element={<FormTabs />} />
             <Route path="/search" element={<SearchResults />} />
             <Route element={<ProtectedRouteUser />}>
-              <Route path="/my-contracts" element={<MyContracts />} />
+              <Route path="/my-contracts">
+                <Route index element={<MyContracts />} />
+                <Route path=":id" element={<ShowContract />} />
+              </Route>
+              
+              {/* <Route path="/my-contracts" element={<MyContracts />} /> */}
             </Route>
 
             {/* Protected routes for admin */}

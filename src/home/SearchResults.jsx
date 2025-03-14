@@ -273,20 +273,20 @@ function SearchResults() {
         ) : null}
       </AnimatePresence>
       <div className="m-4 border-sh rounded-2xl">
-        <div className="flex justify-end mt-4 p-3 gap-3">
+        <div className="flex items-center justify-end mt-4 p-3 gap-3 flex-col-reverse md:flex-row">
           <div className="flex gap-1.5">
             <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("petrol") ? "btn-active" : ""}`} onClick={() => toggleType("petrol")}>petrol</button>
             <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("diesel") ? "btn-active" : ""}`} onClick={() => toggleType("diesel")}>diesel</button>
             <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("electric") ? "btn-active" : ""}`} onClick={() => toggleType("electric")}>electric</button>
             <button className={`btn btn-outline px-4 btn-primary border-primary/50 btn-sm rounded-full capitalize ${types.includes("hybrid") ? "btn-active" : ""}`} onClick={() => toggleType("hybrid")}>hybrid</button>
           </div>
-          <select className="select select-sm w-1/8 rounded-2xl" onChange={(e) => setFilter(e.target.value)}>
+          <select className="select select-sm w-full md:w-1/8 rounded-2xl" onChange={(e) => setFilter(e.target.value)}>
             <option value="">All Brands</option>
             {getAllBrands(cars).map((b) => (
               <option key={b} value={b}>{b}</option>
             ))}
           </select>
-          <label className="input input-sm w-1/6 rounded-2xl">
+          <label className="input input-sm w-full md:w-1/6 rounded-2xl">
             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">
                 <circle cx="11" cy="11" r="8"></circle>

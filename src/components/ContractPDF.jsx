@@ -64,7 +64,7 @@ const ContractPDF = ({ contract, car, client }) => {
   useEffect(() => {
 
     // Convert HTML to a data URL
-    const htmlDataUrl = `https://www.medcars.com/clients/${client.id}/contracts/${contract.id}`;
+    const htmlDataUrl = `https://www.medcars.com/my-contracts/${contract.id}`;
 
     QRCode.toDataURL(htmlDataUrl)
       .then(setQrCode)

@@ -12,7 +12,7 @@ export default function CarsDisplay({info, className}) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredCars.sort((a,b) => Number(b[info.sort]) - Number(a[info.sort])).slice(0, 3).map((car) => (
             <div key={car.id}
-              className="p-4 flex flex-col border-sh transition duration-300 hover:bg-base-300 hover:border-primary hover:scale-110 rounded-xl">
+              className="p-4 mx-auto flex flex-col w-80 md:w-fit border-sh transition duration-300 hover:bg-base-300 hover:border-primary hover:scale-110 rounded-xl">
               <div className="flex gap-4 flex-col items-center w-full">
                 <div>
                   <img src={car.image} alt={car.title} className="h-80 w-full rounded-lg object-cover object-center" />
