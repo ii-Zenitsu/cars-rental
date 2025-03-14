@@ -6,7 +6,7 @@
       "model": "Corolla",
       "year": "2022",
       "price": "100",
-      "image": "https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&q=80&w=1000",
+      "image": "/images/car1.png",
       "type": "petrol",
       "available": false
     },
@@ -16,7 +16,7 @@
       "model": "Civic",
       "year": "2023",
       "price": "60",
-      "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=1000",
+      "image": "/images/car15.png",
       "type": "petrol",
       "available": false
     },
@@ -26,7 +26,7 @@
       "model": "Focus",
       "year": "2021",
       "price": "45",
-      "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=1000",
+      "image": "/images/car12.png",
       "type": "diesel",
       "available": false
     },
@@ -36,7 +36,7 @@
       "model": "X5",
       "year": "2023",
       "price": "100",
-      "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=1000",
+      "image": "/images/car4.png",
       "type": "electric",
       "available": false
     },
@@ -46,7 +46,7 @@
       "model": "C-Class",
       "year": "2022",
       "price": "90",
-      "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000",
+      "image": "/images/car14.png",
       "type": "hybrid",
       "available": true
     },
@@ -56,7 +56,7 @@
       "model": "A4",
       "year": "2023",
       "price": "80",
-      "image": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&q=80&w=1000",
+      "image": "/images/car6.png",
       "type": "petrol",
       "available": true
     },
@@ -632,4 +632,3 @@
     }
   ]
 }
-
