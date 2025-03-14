@@ -6,7 +6,7 @@
       "model": "Corolla",
       "year": "2022",
       "price": "100",
-      "image": "/images/car1.png",
+      "image": "https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&q=80&w=1000",
       "type": "petrol",
       "available": false
     },
@@ -16,7 +16,7 @@
       "model": "Civic",
       "year": "2023",
       "price": "60",
-      "image": "/images/car15.png",
+      "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=1000",
       "type": "petrol",
       "available": false
     },
@@ -26,7 +26,7 @@
       "model": "Focus",
       "year": "2021",
       "price": "45",
-      "image": "/images/car12.png",
+      "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=1000",
       "type": "diesel",
       "available": false
     },
@@ -36,7 +36,7 @@
       "model": "X5",
       "year": "2023",
       "price": "100",
-      "image": "/images/car4.png",
+      "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=1000",
       "type": "electric",
       "available": false
     },
@@ -46,7 +46,7 @@
       "model": "C-Class",
       "year": "2022",
       "price": "90",
-      "image": "/images/car14.png",
+      "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000",
       "type": "hybrid",
       "available": true
     },
@@ -56,7 +56,7 @@
       "model": "A4",
       "year": "2023",
       "price": "80",
-      "image": "/images/car6.png",
+      "image": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&q=80&w=1000",
       "type": "petrol",
       "available": true
     },
@@ -632,3 +632,542 @@
     }
   ]
 }
+
+
+
+[
+  {
+    "id": "1",
+    "brand": "Tesla",
+    "model": "Model 3",
+    "year": 2023,
+    "price": 200,
+    "image": "https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "All-electric sedan with autopilot capabilities. Features include a minimalist interior, large touchscreen display, and excellent range."
+  },
+  {
+    "id": "2",
+    "brand": "BMW",
+    "model": "X5",
+    "year": 2022,
+    "price": 250,
+    "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Luxury SUV with premium features and spacious interior. Perfect for family trips and comfortable long-distance driving."
+  },
+  {
+    "id": "3",
+    "brand": "Mercedes",
+    "model": "C-Class",
+    "year": 2023,
+    "price": 220,
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Elegant sedan with advanced technology and comfort. Features premium audio system and luxurious interior."
+  },
+  {
+    "id": "4",
+    "brand": "Audi",
+    "model": "A4",
+    "year": 2022,
+    "price": 210,
+    "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Sophisticated sedan with cutting-edge technology and refined driving dynamics. Perfect for business trips."
+  },
+  {
+    "id": "5",
+    "brand": "Porsche",
+    "model": "911",
+    "year": 2023,
+    "price": 450,
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Iconic sports car with exceptional performance and handling. A true driving enthusiast's dream."
+  },
+  {
+    "id": "6",
+    "brand": "Toyota",
+    "model": "RAV4 Hybrid",
+    "year": 2023,
+    "price": 150,
+    "image": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Efficient hybrid SUV with excellent fuel economy and reliability. Great for eco-conscious travelers."
+  },
+  {
+    "id": "7",
+    "brand": "Jeep",
+    "model": "Wrangler",
+    "year": 2022,
+    "price": 180,
+    "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Rugged off-road vehicle perfect for adventure seekers. Removable top for open-air driving experience."
+  },
+  {
+    "id": "8",
+    "brand": "Ford",
+    "model": "Mustang GT",
+    "year": 2023,
+    "price": 220,
+    "image": "https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Classic American muscle car with powerful engine and iconic styling. Thrilling driving experience."
+  },
+  {
+    "id": "10",
+    "brand": "Range Rover",
+    "model": "Sport",
+    "year": 2023,
+    "price": 350,
+    "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Premium luxury SUV combining off-road capability with refined on-road performance. Features advanced terrain response system."
+  },
+  {
+    "id": "11",
+    "brand": "Lamborghini",
+    "model": "Huracán",
+    "year": 2023,
+    "price": 800,
+    "image": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Exotic supercar with breathtaking performance and striking design. V10 engine delivers incredible power and sound."
+  },
+  {
+    "id": "12",
+    "brand": "McLaren",
+    "model": "720S",
+    "year": 2023,
+    "price": 750,
+    "image": "https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "High-performance supercar with innovative aerodynamics and cutting-edge technology. Pure driving excellence."
+  },
+  {
+    "id": "13",
+    "brand": "Maserati",
+    "model": "Ghibli",
+    "year": 2023,
+    "price": 300,
+    "image": "https://images.unsplash.com/photo-1605515298946-d062f2e9da53?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Italian luxury sedan combining style with performance. Features Ferrari-built engine and premium leather interior."
+  },
+
+  {
+    "id": "16",
+    "brand": "Ferrari",
+    "model": "F8 Tributo",
+    "year": 2023,
+    "price": 900,
+    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Legendary Italian supercar with twin-turbo V8 engine. Represents the pinnacle of Ferrari performance technology."
+  },
+  {
+    "id": "17",
+    "brand": "Rolls-Royce",
+    "model": "Ghost",
+    "year": 2023,
+    "price": 1000,
+    "image": "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Ultimate luxury sedan with unmatched presence and comfort. Features bespoke craftsmanship and cutting-edge technology."
+  },
+
+  {
+    "id": "19",
+    "brand": "Porsche",
+    "model": "Taycan",
+    "year": 2023,
+    "price": 320,
+    "image": "https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "All-electric performance sedan combining Porsche heritage with future technology. Incredible acceleration and handling."
+  },
+  {
+    "id": "20",
+    "brand": "Mercedes-AMG",
+    "model": "GT",
+    "year": 2023,
+    "price": 420,
+    "image": "https://images.unsplash.com/photo-1617654112368-307921291f42?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "High-performance sports car with aggressive styling and thunderous V8 engine. True Mercedes-AMG engineering excellence."
+  },
+  {
+    "id": "21",
+    "brand": "Aston Martin",
+    "model": "DB11",
+    "year": 2023,
+    "price": 650,
+    "image": "https://images.unsplash.com/photo-1600712242805-5f78671b24da?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Elegant British grand tourer with powerful V12 engine. Combines luxury with sporting performance in a timeless design."
+  },
+  {
+    "id": "22",
+    "brand": "Bentley",
+    "model": "Continental GT",
+    "year": 2023,
+    "price": 700,
+    "image": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Handcrafted luxury coupe with W12 engine. Features exquisite materials and unparalleled comfort for grand touring."
+  },
+
+  {
+    "id": "24",
+    "brand": "Lexus",
+    "model": "LC 500",
+    "year": 2023,
+    "price": 400,
+    "image": "https://images.unsplash.com/photo-1599912027611-484b9fc447af?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Stunning luxury coupe with naturally aspirated V8. Combines avant-garde design with meticulous Japanese craftsmanship."
+  },
+  {
+    "id": "25",
+    "brand": "Bugatti",
+    "model": "Chiron",
+    "year": 2023,
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1600712242805-5f78671b24da?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Hypercar masterpiece with quad-turbo W16 engine. Engineering marvel capable of extraordinary speed with unmatched luxury."
+  },
+  {
+    "id": "26",
+    "brand": "Koenigsegg",
+    "model": "Jesko",
+    "year": 2023,
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Swedish hypercar with revolutionary Light Speed Transmission. Designed to break the 300 mph barrier with innovative aerodynamics."
+  },
+  {
+    "id": "27",
+    "brand": "Pagani",
+    "model": "Huayra",
+    "year": 2023,
+    "price": 1800,
+    "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Italian hypercar with twin-turbo AMG V12. Features artistic design with exposed mechanical components and gullwing doors."
+  },
+  {
+    "id": "28",
+    "brand": "Rimac",
+    "model": "Nevera",
+    "year": 2023,
+    "price": 2000,
+    "image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "All-electric hypercar with 1,914 horsepower. Cutting-edge Croatian engineering with record-breaking acceleration and range."
+  },
+  {
+    "id": "29",
+    "brand": "Lotus",
+    "model": "Emira",
+    "year": 2023,
+    "price": 350,
+    "image": "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Final combustion-engine sports car from Lotus. Combines lightweight construction with supercharged performance."
+  },
+  {
+    "id": "30",
+    "brand": "Alpine",
+    "model": "A110",
+    "year": 2023,
+    "price": 280,
+    "image": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Lightweight French sports car with mid-engine layout. Offers agile handling and driver-focused experience."
+  },
+  {
+    "id": "31",
+    "brand": "Alfa Romeo",
+    "model": "Giulia Quadrifoglio",
+    "year": 2023,
+    "price": 290,
+    "image": "https://images.unsplash.com/photo-1566473965997-3de9c817e938?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Italian performance sedan with Ferrari-derived V6. Combines passionate design with track-capable performance."
+  },
+
+  {
+    "id": "33",
+    "brand": "Chevrolet",
+    "model": "Corvette Z06",
+    "year": 2023,
+    "price": 380,
+    "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Mid-engine American supercar with flat-plane crank V8. Delivers exotic performance with everyday usability."
+  },
+
+  {
+    "id": "35",
+    "brand": "Ford",
+    "model": "GT",
+    "year": 2022,
+    "price": 1200,
+    "image": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "American supercar with racing heritage. Carbon fiber construction and twin-turbo V6 deliver exceptional performance."
+  },
+  {
+    "id": "36",
+    "brand": "Genesis",
+    "model": "G70",
+    "year": 2023,
+    "price": 190,
+    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Korean luxury sport sedan with twin-turbo V6 option. Offers premium features and engaging driving dynamics."
+  },
+
+  {
+    "id": "40",
+    "brand": "Lucid",
+    "model": "Air",
+    "year": 2023,
+    "price": 400,
+    "image": "https://images.unsplash.com/photo-1607853554439-0069ec0f29b6?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Luxury electric sedan with industry-leading range. Features spacious interior and advanced driver assistance systems."
+  },
+
+  {
+    "id": "42",
+    "brand": "Mini",
+    "model": "Cooper S",
+    "year": 2023,
+    "price": 130,
+    "image": "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "British compact car with go-kart handling. Combines retro styling with modern technology and turbocharged performance."
+  },
+
+  {
+    "id": "44",
+    "brand": "Polestar",
+    "model": "2",
+    "year": 2023,
+    "price": 190,
+    "image": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Swedish electric fastback with minimalist design. Features Google-powered infotainment and sustainable materials."
+  },
+  {
+    "id": "45",
+    "brand": "Rivian",
+    "model": "R1T",
+    "year": 2023,
+    "price": 280,
+    "image": "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Electric adventure pickup with quad motors. Offers impressive off-road capability and innovative storage solutions."
+  },
+
+  {
+    "id": "47",
+    "brand": "Tesla",
+    "model": "Model S Plaid",
+    "year": 2023,
+    "price": 450,
+    "image": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "High-performance electric sedan with tri-motor setup. Offers supercar acceleration with practical four-door design."
+  },
+
+  {
+    "id": "49",
+    "brand": "Volkswagen",
+    "model": "Golf R",
+    "year": 2023,
+    "price": 160,
+    "image": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "German hot hatchback with turbocharged engine and AWD. Combines everyday practicality with serious performance."
+  },
+  {
+    "id": "50",
+    "brand": "Volvo",
+    "model": "C40 Recharge",
+    "year": 2023,
+    "price": 190,
+    "image": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Swedish electric crossover coupe with distinctive styling. Features sustainable interior materials and advanced safety."
+  },
+  {
+    "id": "51",
+    "brand": "Acura",
+    "model": "NSX Type S",
+    "year": 2022,
+    "price": 650,
+    "image": "https://images.unsplash.com/photo-1600712242805-5f78671b24da?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Limited edition hybrid supercar with mid-engine layout. Combines electric motors with twin-turbo V6 for exceptional performance."
+  },
+  {
+    "id": "52",
+    "brand": "Audi",
+    "model": "RS e-tron GT",
+    "year": 2023,
+    "price": 420,
+    "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "High-performance electric grand tourer with dual motors. Offers Porsche-derived platform with distinctive Audi styling."
+  },
+  {
+    "id": "53",
+    "brand": "BMW",
+    "model": "M3 Competition",
+    "year": 2023,
+    "price": 320,
+    "image": "https://images.unsplash.com/photo-1607853554439-0069ec0f29b6?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Iconic German sport sedan with twin-turbo inline-six. Available with rear or all-wheel drive for track-ready performance."
+  },
+
+  {
+    "id": "55",
+    "brand": "Ferrari",
+    "model": "296 GTB",
+    "year": 2023,
+    "price": 950,
+    "image": "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Hybrid supercar with twin-turbo V6 and electric motor. Represents the future of Ferrari with cutting-edge technology."
+  },
+  {
+    "id": "56",
+    "brand": "Ford",
+    "model": "F-150 Raptor",
+    "year": 2023,
+    "price": 250,
+    "image": "https://images.unsplash.com/photo-1605893477799-b99e3b8b93fe?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "High-performance off-road pickup with twin-turbo V6. Features long-travel suspension and aggressive styling."
+  },
+  {
+    "id": "57",
+    "brand": "GMC",
+    "model": "Hummer EV",
+    "year": 2023,
+    "price": 380,
+    "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "All-electric super truck with tri-motor setup. Features crab walk mode and removable roof panels for open-air driving."
+  },
+  {
+    "id": "58",
+    "brand": "Jaguar",
+    "model": "I-PACE",
+    "year": 2023,
+    "price": 240,
+    "image": "https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Electric performance SUV with distinctive styling. Offers engaging handling and practical range for daily use."
+  },
+
+  {
+    "id": "60",
+    "brand": "Land Rover",
+    "model": "Defender 90",
+    "year": 2023,
+    "price": 230,
+    "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Iconic British off-roader with modern technology. Two-door version offers compact dimensions with uncompromised capability."
+  },
+  {
+    "id": "61",
+    "brand": "Lexus",
+    "model": "RZ 450e",
+    "year": 2023,
+    "price": 220,
+    "image": "https://images.unsplash.com/photo-1599912027611-484b9fc447af?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Luxury electric crossover with distinctive styling. Features yoke steering option and advanced driver assistance systems."
+  },
+  {
+    "id": "62",
+    "brand": "Lincoln",
+    "model": "Navigator",
+    "year": 2023,
+    "price": 280,
+    "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Full-size American luxury SUV with twin-turbo V6. Offers spacious three-row seating and premium amenities."
+  },
+  {
+    "id": "63",
+    "brand": "Maserati",
+    "model": "MC20",
+    "year": 2023,
+    "price": 850,
+    "image": "https://images.unsplash.com/photo-1605515298946-d062f2e9da53?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Mid-engine Italian supercar with twin-turbo V6. Features butterfly doors and carbon fiber construction for lightweight performance."
+  },
+  {
+    "id": "64",
+    "brand": "Mercedes-Benz",
+    "model": "EQS",
+    "year": 2023,
+    "price": 350,
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Flagship electric luxury sedan with hyperscreen display. Offers exceptional range and aerodynamic efficiency."
+  },
+
+  {
+    "id": "66",
+    "brand": "Porsche",
+    "model": "Cayman GT4 RS",
+    "year": 2023,
+    "price": 480,
+    "image": "https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Track-focused mid-engine sports car with naturally aspirated flat-six. Offers 911 GT3 engine in compact Cayman chassis."
+  },
+  {
+    "id": "67",
+    "brand": "Rivian",
+    "model": "R1S",
+    "year": 2023,
+    "price": 290,
+    "image": "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Electric adventure SUV with three-row seating. Features quad motors and impressive off-road capability."
+  },
+  {
+    "id": "68",
+    "brand": "Tesla",
+    "model": "Model X Plaid",
+    "year": 2023,
+    "price": 480,
+    "image": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "High-performance electric SUV with falcon wing doors. Offers supercar acceleration with family-friendly practicality."
+  },
+
+  {
+    "id": "70",
+    "brand": "Volkswagen",
+    "model": "ID.4",
+    "year": 2023,
+    "price": 160,
+    "image": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=1000",
+    "available": true,
+    "description": "Electric crossover with spacious interior. Offers practical range and familiar Volkswagen quality in an EV package."
+  }
+]
