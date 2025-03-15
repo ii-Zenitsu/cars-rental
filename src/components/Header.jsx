@@ -15,6 +15,7 @@ function Header() {
   const controls = useAnimation();
   const [activeTab, setActiveTab] = useState("");
   const tab = useRef({});
+  
 
   useEffect(() => {
     const path = location.pathname;
@@ -65,7 +66,7 @@ function Header() {
               <li ref={(e) => (tab.current["/contracts"] = e)}><NavLink className={({ isActive }) => `btn btn-sm transition-[border-radius] duration-500 rounded-2xl btn-outline w-22 btn-accent ${isActive ? "rounded-b-none font-bold text-base" : ""}`} to="/contracts">Contracts</NavLink></li>
             </>
           )}
-          {["/dashboard", "/cars", "/clients", "/contracts", "/my-contracts", "/search", "/"].includes(location.pathname) && <motion.div className="absolute bottom-0 rounded-b-sm left-0 h-1 bg-accent/90" animate={controls} initial={{ x: 0 }} />}
+          {["/dashboard", "/cars", "/clients", "/contracts", "/my-contracts", "/search"].includes(location.pathname) && <motion.div className="absolute bottom-0 rounded-b-sm left-0 h-1 bg-accent/90" animate={controls} initial={{ x: 0 }} />}
         </ul>
       </div>
       <div className="navbar-end">

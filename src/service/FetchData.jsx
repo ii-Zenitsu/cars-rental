@@ -9,18 +9,15 @@ const useFetchData = () => {
 
   useEffect(() => {
     setLoading(true);
-    Promise.all([
-      axios.get("http://localhost:3001/cars"),
-      axios.get("http://localhost:3001/clients"),
-      axios.get("http://localhost:3001/contracts"),
-    ]).then(([carsRes, clientsRes, contractsRes]) => {
-        dispatch({ type: "UPDATE_CARS", payload: carsRes.data.map(c => createCar(c)) });
-        dispatch({ type: "UPDATE_CLIENTS", payload: clientsRes.data.map(c => createClient(c)) });
-        dispatch({ type: "UPDATE_CONTRACTS", payload: contractsRes.data.map(c => createContract(c)) });
+    axios.get("https://ii-zenitsu.github.io/cars-rental/data.json")
+    .then(res => {
+        dispatch({ type: "UPDATE_CARS", payload: res.data.cars.map(c => createCar(c)) });
+        dispatch({ type: "UPDATE_CLIENTS", payload: res.data.clients.map(c => createClient(c)) });
+        dispatch({ type: "UPDATE_CONTRACTS", payload: res.data.contracts.map(c => createContract(c)) });
 
         const email = localStorage.getItem("user_email");
         if (email) {
-          const user = createUser(clientsRes.data.find((c) => c.email === email));
+          const user = createUser(res.data.clients.find((c) => c.email === email));
           if (user) {
             dispatch({ type: "UPDATE_USER", payload: user });
           }
